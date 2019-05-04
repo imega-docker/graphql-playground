@@ -12,6 +12,6 @@ build:
 		-t $(IMG):$(TAG) .
 
 release:
-	@docker login --username $(DOCKER_USER) --password $(DOCKER_PASS)
+	@docker login --username $(DOCKER_USER) --password $(DOCKER_PASS) docker.io
 	@docker tag $(IMG):$(TAG) $(IMG):latest
 	@docker push $(IMG):$(TAG)
