@@ -18,7 +18,14 @@ const server = new ApolloServer({ typeDefs, resolvers });
 
 const app = express();
 
-server.applyMiddleware({ app });
+server.applyMiddleware({
+    app,
+    cors: {
+        origin: "*",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        optionsSuccessStatus: 204
+    }
+});
 
 app.use("/playground", expressPlayground({ endpoint: "/graphql" }));
 
