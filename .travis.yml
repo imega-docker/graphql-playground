@@ -1,0 +1,14 @@
+branches:
+    only:
+        - master
+language: ruby
+services:
+    - docker
+script:
+    - VN=`curl --silent "https://api.github.com/repos/imega-docker/graphql-playground/tags" | docker run --rm -i imega/jq -r '.[0].name'`
+    - RELEASE=0
+    - docker pull imega/graphql-playground:$VN || RELEASE=1
+    - make build TAG=$VN || exit 1
+after_success:
+    - |
+        [ "${RELEASE}" == "1" ] && [ "${VN}" != "null" ] && (make release DOCKER_USER=$DOCKER_USER DOCKER_PASS=$DOCKER_PASS TAG=$VN)

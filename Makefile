@@ -10,3 +10,8 @@ build:
 		--build-arg GO_IMG=$(GO_IMG) \
 		--build-arg CWD=$(CWD) \
 		-t $(IMG):$(TAG) .
+
+release:
+	@docker login --username $(DOCKER_USER) --password $(DOCKER_PASS)
+	@docker push $(IMG):$(TAG)
+	@docker push $(IMG):latest
