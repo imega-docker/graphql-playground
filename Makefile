@@ -15,3 +15,4 @@ release:
 	@docker login --username $(DOCKER_USER) --password $(DOCKER_PASS) docker.io
 	@docker tag $(IMG):latest $(IMG):$(TAG)
 	@docker push $(IMG):latest
+	@docker push $(IMG):$(TAG)
