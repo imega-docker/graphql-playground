@@ -37,3 +37,27 @@ query getBooks {
     }
 }
 ```
+
+## Your resolver and schema
+
+```bash
+$ docker run -d -p 4000:4000 \
+    -v path/to/my/resolvers:/app/resolvers \
+    -v path/to/my/schema:/app/schema \
+    imega/graphql-playground:latest
+```
+
+docker-compose.yml
+
+```yaml
+version: "3.3"
+
+services:
+    app:
+        image: imega/graphql-playground:latest
+        volumes:
+            - ./resolvers:/app/resolvers
+            - ./schema:/app/schema
+        ports:
+            - 4000:4000
+```
