@@ -1,5 +1,7 @@
 # Graphql and playground
 
+[![Build Status](https://travis-ci.org/imega-docker/graphql-playground.svg?branch=master)](https://travis-ci.org/imega-docker/graphql-playground)
+
 ## Usage
 
 ```bash
